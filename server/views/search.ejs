@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+
+        <a href="/">Return to home page</a>
+        <h1> Find your contact </h1>
+        <form action="/search" method="POST">
+            <input type="text" name="userName" placeholder="Enter your username..">
+            <input type="email" name="userEmail" placeholder="Enter your email..">
+
+            <button>Apply</button>
+        </form>
+        
+        <h3>Search results : </h3>
+
+            <% if(userData.length == 0){ %>
+                <h1>No such contact exists 😞</h1>
+            <% }else{ %>
+                
+                <ul>
+                    <% userData.forEach(function(element) { %>
+                        <li><%= element.userName %> : <%= element.userEmail %> : <%= element.userPhoneNo %>  
+                            <a href="/update/<%= element._id %>">Update your contact</a>   <form action="/delete/<%= element._id %>" method="POST"><button type="submit">Delete</button></form> </li>
+                            <br>
+                        <% }) %>
+                </ul>
+            <% } %>
+
+            <h3>Pages</h3>
+            <a href="/search">1</a>
+            <a href="/search/2">2</a>
+            <a href="/search/3">3</a>
+
+        <script src="" async defer></script>
+    </body>
+</html>
+
+
